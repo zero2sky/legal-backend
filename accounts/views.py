@@ -57,10 +57,13 @@ class validateOtp(APIView):
         phone = request.data.get('phone',None)
         otp = request.data.get('otp',None)
 
-        if phone and otp:
-            flag = bool(re.match('[\d]{10}', phone)) and bool(re.match('[\d]{6}', otp))
+        if validate_test_phone(phone):
+            flag = True
         else:
-            flag = False
+            if phone and otp:
+                flag = bool(re.match('[\d]{10}', phone)) and bool(re.match('[\d]{6}', otp))
+            else:
+                flag = False
 
         
         if flag:
