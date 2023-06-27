@@ -1,5 +1,5 @@
 import re
-from accounts.otp import generate_otp, get_otp
+from accounts.otp import generate_otp, get_otp, validate_test_phone
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
@@ -18,7 +18,7 @@ class sendOtp(APIView):
 
         phone = request.data.get('phone',None)
         if phone is not None:
-            if phone[0:4] == '1111':
+            if validate_test_phone(phone):
                 flag = True
             else:
                 flag = bool(re.match('[\d]{10}', phone))
@@ -28,8 +28,8 @@ class sendOtp(APIView):
         if flag:
             if User.objects.filter(Phone=phone).exists():
                 return Response({'message':"Phone Number is already Registered"},status=status.HTTP_400_BAD_REQUEST)
-            if phone[0:4] == '1111':
-                get_otp = 000000
+            if validate_test_phone(phone):
+                get_otp = 999999
             else:
                 get_otp = generate_otp(phone)
 

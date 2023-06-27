@@ -57,3 +57,6 @@ def get_otp(mob, otp):
 
     except Profile.DoesNotExist:
         return False
+    
+def validate_test_phone(phone):
+    return int(phone/1000000) == 1111
