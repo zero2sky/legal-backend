@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=u88j%19p1*45c*3(#gd+fpi%x!zy3l)_n+o3%g*81wq2g58fb'
+SECRET_KEY = 'django-insecure-h#r1%^%w=of8e8wrj0j5e^eoutra=fo^g5*7o*#h)4uu6&2r*6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -140,3 +139,11 @@ REST_KNOX = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'zerotoskyemail@gmail.com'
+EMAIL_HOST_PASSWORD = 'Email@zero2sky'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
