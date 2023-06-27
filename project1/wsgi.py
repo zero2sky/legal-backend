@@ -21,7 +21,7 @@ import os
 import sys
 
 # assuming your Django settings file is at '/home/myusername/mysite/mysite/settings.py'
-path = '/home/projectnf/Project1'
+path = '/home/zero2sky/legal-backend'
 if path not in sys.path:
     sys.path.insert(0, path)
 
