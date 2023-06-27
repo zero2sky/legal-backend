@@ -53,7 +53,7 @@ def update_otp(mob, otp):
 def get_otp(mob, otp):
     try:
         otpObj = Profile.objects.get(Phone=mob)
-        return otpObj.otp == otp 
+        return int(otpObj.otp) == otp 
     # and from_utc_to_local(otpObj.date)
 
     except Profile.DoesNotExist:

@@ -87,8 +87,8 @@ class validateOtp(APIView):
 
 class registerUser(APIView):
 
-    def responseFunction(object):
-        message = f"{object} is not Provided"
+    def responseFunction(self, key):
+        message = f"{key} is not Provided"
         return Response({'message': message},status=status.HTTP_400_BAD_REQUEST)
 
     def post(self,request,*args, **kwargs):
@@ -98,16 +98,16 @@ class registerUser(APIView):
         password = request.data.get('password',None)
 
         if first is None:
-            return self.responseFunction("First Name")
+            return self.responseFunction("firstName")
         
         if last is None:
-            return self.responseFunction("Last Name")
+            return self.responseFunction("lastName")
 
         if phone is None:
-            return self.responseFunction("Phone")
+            return self.responseFunction("phone")
         
         if password is None:
-            return self.responseFunction("Password")
+            return self.responseFunction("password")
 
         if User.objects.filter(Phone=phone).exists():
             return Response({'message':"Phone Number is already Registered"},status=status.HTTP_400_BAD_REQUEST)
