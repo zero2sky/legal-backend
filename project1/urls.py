@@ -7,6 +7,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('accounts.urls')),
+    path('email/',include('sendEmail.urls')),
 ]
 
 if settings.DEBUG:
